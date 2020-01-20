@@ -29,3 +29,9 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
   - Template : Spring MVC Project
 3. com.study.brd
 
+
+## 작업 내역
+### 20.01.20
+- 프로젝트 생성
+- log4j 버전 수정
+- jsp 한글 깨짐 수정
