@@ -9,7 +9,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.study.brd" level="info" additivity="false">
+	<logger name="com.study.brd" level="debug" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
@@ -40,7 +40,7 @@
 
 
 	<!-- Root Logger -->
-	<root level="info">
+	<root level="debug">
 		<appender-ref ref="STDOUT" />
 	</root>
 	
