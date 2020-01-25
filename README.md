@@ -38,6 +38,7 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - HandlerInterceptorAdapter를 상속받은 LoggerInterceptor 생성
   - Controller로 요청이 들어 올 때, 대상 URI와 Request Parameter를 출력하는데 사용할 수 있다.
 - Spring MyBatis 연동, TEST
+- Mapper 및 JSON 설정 - 이걸 근데 지금 왜?
 
 ### 20.01.20
 - 프로젝트 생성
