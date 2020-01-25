@@ -24,6 +24,7 @@ public class DataSourceTest {
 
   @Test
   public void dataSourceConnectionTest() throws Exception {
+    logger.info("========================================== DataSource Connection TEST START ==========================================");
     Connection conn = null;
 
     try {
@@ -33,5 +34,6 @@ public class DataSourceTest {
       logger.error("\n\t!! connection FAIL: [{}]!!", conn);
       e.getMessage();
     }
+    logger.info("========================================== DataSource Connection TEST E N D ==========================================");
   }
 }

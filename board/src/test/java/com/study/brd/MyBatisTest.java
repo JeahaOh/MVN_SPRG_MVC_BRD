@@ -20,6 +20,8 @@ public class MyBatisTest {
 
   @Test
   public void MyBatisSessionTest() throws Exception {
+    logger.info("========================================== MyBatis Session TEST START ==========================================");
+    
     SqlSession session = null;
 
     try {
@@ -29,5 +31,6 @@ public class MyBatisTest {
     } catch( Exception e ) {
       e.printStackTrace();
     }
+    logger.info("========================================== MyBatis Session TEST E N D ==========================================");
   }
 }
