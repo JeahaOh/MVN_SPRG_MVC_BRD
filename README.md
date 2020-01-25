@@ -34,3 +34,8 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - log4j 버전 수정
 - jsp 한글 깨짐 수정
 
+<<<<<<< HEAD
+=======
+## 참고할 포스팅
+- https://tychejin.tistory.com/10?category=765216
+>>>>>>> ca048aad4140b9a29cdc30bced2aff4b83227ead
