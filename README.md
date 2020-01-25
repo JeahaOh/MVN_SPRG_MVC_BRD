@@ -4,16 +4,14 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
   
 ## 개발 환경
 - Language :
-  - openjdk 11.0.1 2018-10-16
-  - OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
-  - OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)
+  - JDK 1.8
 - IDE :
   - VSCODE
   - STS 3.9.8  
     - https://spring.io/tools3/sts/legacy
 - Database : MariaDB 10.4.6  
-- Spring : 3.1.1
-- WAS : Apache Tomcat 8.5
+- Spring : 4.3.6.RELEASE
+- WAS : Apache Tomcat 9.0
   
 ## Repository 생성
 - Github에 원격 저장소 생성
@@ -35,3 +33,4 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - 프로젝트 생성
 - log4j 버전 수정
 - jsp 한글 깨짐 수정
+
