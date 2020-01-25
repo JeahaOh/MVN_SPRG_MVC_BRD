@@ -5,11 +5,18 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JDBCConnectionTest {
-  private static final String DRIVER    = "org.mariadb.jdbc.Driver";
-  private static final String URL       = "jdbc:mariadb://localhost:3306/test";
+  protected final Logger logger = LoggerFactory.getLogger(this.getClass());
+  
+//  private static final String DRIVER    = "org.mariadb.jdbc.Driver";
+//  private static final String URL       = "jdbc:mariadb://localhost:3306/test";
+  private static final String DRIVER    = "net.sf.log4jdbc.sql.jdbcapi.DriverSpy";
+  private static final String URL       = "jdbc:log4jdbc:mariadb://localhost:3306/test";
   private static final String USERNAME  = "root";
   private static final String PASSWORD  = "1111";
   
@@ -33,7 +40,7 @@ public class JDBCConnectionTest {
       while( rs.next() ) {
         String version = rs.getString("VER");
         
-        System.out.println(version);
+        logger.info(version);
       }
       
       rs.close();
