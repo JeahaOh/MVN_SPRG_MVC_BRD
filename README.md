@@ -34,6 +34,7 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - VO DAO Controller Service class 생성
 - 게시글 목록 조회 jsp 생성
 - 게시글 목록 조회 기능 개발
+- 게시글 상세 조회 기능
   
 ### 20.01.25
 - MariaDB Connection TEST

@@ -21,6 +21,27 @@ public class Board {
     super();
   }
   
+  
+  public Board(int board_seq, int board_re_ref, int board_re_lev, int board_re_seq,
+      String board_writer, String board_subject, String board_content, int board_hits,
+      String del_yn, String ins_user_id, Date ins_date, String upd_user_id, Date upd_date) {
+    super();
+    this.board_seq = board_seq;
+    this.board_re_ref = board_re_ref;
+    this.board_re_lev = board_re_lev;
+    this.board_re_seq = board_re_seq;
+    this.board_writer = board_writer;
+    this.board_subject = board_subject;
+    this.board_content = board_content;
+    this.board_hits = board_hits;
+    this.del_yn = del_yn;
+    this.ins_user_id = ins_user_id;
+    this.ins_date = ins_date;
+    this.upd_user_id = upd_user_id;
+    this.upd_date = upd_date;
+  }
+
+
   public int getBoard_seq() {
     return board_seq;
   }

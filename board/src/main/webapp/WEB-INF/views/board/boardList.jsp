@@ -9,6 +9,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>게시판 목록</title>
+  <script>
+  // 게시물 tr 클릭 시 게시물 번호를 받아서 게시물 상세 페이지를 요청한다.
+  const goBoardDetail = function(boardSeq) {
+    location.href = "/board/boardDetail?board_seq=" + boardSeq;
+  }
+  </script>
 </head>
 <body>
   <table border="1" width="350">
@@ -30,7 +36,7 @@
         </c:when>
         <c:otherwise>
           <c:forEach var="brd" items="${boardList}">
-            <tr>
+            <tr onclick="goBoardDetail(${brd.board_seq})" style='cursor:Pointer'>
               <td>${brd.board_seq}</td>
               <td>${brd.board_subject}</td>
               <td>${brd.board_hits}</td>
