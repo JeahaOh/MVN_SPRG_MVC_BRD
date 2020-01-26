@@ -23,6 +23,7 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public Board getBoardDetail(Board board) throws Exception {
     logger.info(board.toString());
+    logger.info(boardDao.updateBoardHits(board) + "");
     return boardDao.getBoardDetail(board);
   }
 

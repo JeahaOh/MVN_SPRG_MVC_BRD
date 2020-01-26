@@ -25,4 +25,8 @@ public class BoardDAO {
     logger.info(String.valueOf(board.getBoard_seq()));
     return sqlSession.selectOne(NAMESPACE + ".getBoardDetail", board);
   }
+  
+  public int updateBoardHits(Board board) throws Exception {
+    return sqlSession.update(NAMESPACE + ".updateBoardHits", board);
+  }
 }
