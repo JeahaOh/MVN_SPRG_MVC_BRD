@@ -1,6 +1,8 @@
 package com.study.brd.board.SRVC;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,23 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public Board getBoardDetail(Board board) throws Exception {
     logger.info(board.toString());
-    logger.info(boardDao.updateBoardHits(board) + "");
+    if( board.getSearch_type() != null && !board.getSearch_type().toLowerCase().equals("s") ) {
+      logger.info("board.search_type : " + boardDao.updateBoardHits(board) );
+    }
     return boardDao.getBoardDetail(board);
+  }
+
+  @Override
+  public Map<String, String> deleteBoard(Board board) throws Exception {
+    logger.info(board.toString());
+    Map<String,String> result = new HashMap<String, String>();
+    if( boardDao.deleteBoard(board) > 0 ) {
+      result.put("result", "success");
+    } else {
+      result.put("result", "fail");
+    }
+    
+    return result;
   }
 
 }

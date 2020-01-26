@@ -43,5 +43,12 @@
     UPDATE TB_BOARD
       SET BOARD_HITS = BOARD_HITS + 1
     WHERE BOARD_SEQ = #{board_seq}
-  </update> 
+  </update>
+  
+  <delete id="deleteBoard" parameterType="com.study.brd.board.VO.Board">
+    DELETE
+    FROM TB_BOARD
+    WHERE BOARD_SEQ = #{board_seq}
+  </delete>
+  
 </mapper>

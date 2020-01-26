@@ -16,6 +16,7 @@ public class Board {
   Date ins_date;
   String upd_user_id;
   Date upd_date;
+  String search_type;
   
   public Board() {
     super();
@@ -24,7 +25,7 @@ public class Board {
   
   public Board(int board_seq, int board_re_ref, int board_re_lev, int board_re_seq,
       String board_writer, String board_subject, String board_content, int board_hits,
-      String del_yn, String ins_user_id, Date ins_date, String upd_user_id, Date upd_date) {
+      String del_yn, String ins_user_id, Date ins_date, String upd_user_id, Date upd_date, String search_type) {
     super();
     this.board_seq = board_seq;
     this.board_re_ref = board_re_ref;
@@ -39,6 +40,7 @@ public class Board {
     this.ins_date = ins_date;
     this.upd_user_id = upd_user_id;
     this.upd_date = upd_date;
+    this.search_type = search_type;
   }
 
 
@@ -119,6 +121,12 @@ public class Board {
   }
   public void setUpd_date(Date upd_date) {
     this.upd_date = upd_date;
+  }
+  public String getSearch_type() {
+    return search_type;
+  }
+  public void setSearch_type(String search_type) {
+    this.search_type = search_type;
   }
   
   @Override

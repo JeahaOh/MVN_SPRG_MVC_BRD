@@ -1,6 +1,7 @@
 package com.study.brd.board.CTRL;
 
 import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.brd.board.SRVC.BoardService;
 import com.study.brd.board.VO.Board;
 
@@ -51,5 +53,11 @@ public class BoardController {
     board = boardService.getBoardDetail(board);
     model.addAttribute("board", board);
     return "board/boardDetail";
+  }
+  
+  @RequestMapping(value="/deleteBoard")
+  @ResponseBody
+  public Map<String, String> deleteBoard(Board board) throws Exception {
+    return boardService.deleteBoard(board);
   }
 }

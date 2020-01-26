@@ -29,4 +29,8 @@ public class BoardDAO {
   public int updateBoardHits(Board board) throws Exception {
     return sqlSession.update(NAMESPACE + ".updateBoardHits", board);
   }
+  
+  public int deleteBoard(Board board) throws Exception {
+    return sqlSession.delete(NAMESPACE + ".deleteBoard", board);
+  }
 }

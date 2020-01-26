@@ -29,7 +29,9 @@
 	<logger name="org.springframework.web" level="error" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
-
+  
+  <logger name="org.mybatis.spring.SqlSessionUtils" level="error"/>
+  
 	<logger name="jdbc.sqlonly" level="info"/>
 	<logger name="jdbc.sqltiming" level="error"/>
 	<logger name="jdbc.audit" level="WARN"/>
