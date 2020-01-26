@@ -16,7 +16,7 @@ public class JDBCConnectionTest {
 //  private static final String DRIVER    = "org.mariadb.jdbc.Driver";
 //  private static final String URL       = "jdbc:mariadb://localhost:3306/test";
   private static final String DRIVER    = "net.sf.log4jdbc.sql.jdbcapi.DriverSpy";
-  private static final String URL       = "jdbc:log4jdbc:mariadb://localhost:3306/test";
+  private static final String URL       = "jdbc:log4jdbc:mariadb://localhost:3306/board";
   private static final String USERNAME  = "root";
   private static final String PASSWORD  = "1111";
   
@@ -33,14 +33,18 @@ public class JDBCConnectionTest {
       conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
       stmt = conn.createStatement();
       
-      String sql = "SELECT VERSION() AS VER";
+//      String sql = "SELECT VERSION() AS VER";
+      String sql = "SELECT BOARD_SUBJECT, BOARD_CONTENT, BOARD_WRITER FROM TB_BOARD";
       
       ResultSet rs = stmt.executeQuery(sql);
       
       while( rs.next() ) {
-        String version = rs.getString("VER");
+//        String version = rs.getString("VER");
+//        logger.info(version);
         
-        logger.info(version);
+        logger.info( rs.getString("BOARD_SUBJECT") );
+        logger.info( rs.getString("BOARD_CONTENT") );
+        logger.info( rs.getString("BOARD_WRITER") );
       }
       
       rs.close();

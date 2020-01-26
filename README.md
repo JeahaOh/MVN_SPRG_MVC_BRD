@@ -29,6 +29,12 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 
 
 ## 작업 내역
+### 20.01.26
+- log4jdbc.log4j.properties 수정 -> Driver 안잡아 줘서 main src에서 DB를 못잡음.
+- VO DAO Controller Service class 생성
+- 게시글 목록 조회 jsp 생성
+- 게시글 목록 조회 기능 개발
+  
 ### 20.01.25
 - MariaDB Connection TEST
 - 설정 변경
@@ -39,11 +45,11 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
   - Controller로 요청이 들어 올 때, 대상 URI와 Request Parameter를 출력하는데 사용할 수 있다.
 - Spring MyBatis 연동, TEST
 - Mapper 및 JSON 설정 - 이걸 근데 지금 왜?
-
+  
 ### 20.01.20
 - 프로젝트 생성
 - log4j 버전 수정
 - jsp 한글 깨짐 수정
-
+  
 ## 참고할 포스팅
 - https://tychejin.tistory.com/10?category=765216
