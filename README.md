@@ -29,6 +29,10 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 
 
 ## 작업 내역
+### 20.01.27
+- index.jsp redirect to board/list
+- jsp CSS 적용
+
 ### 20.01.26
 - log4jdbc.log4j.properties 수정 -> Driver 안잡아 줘서 main src에서 DB를 못잡음.
 - VO DAO Controller Service class 생성
@@ -37,7 +41,7 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - 게시글 상세 조회 기능
 - 게시글 조회수 수정 기능
 - 게시물 삭제 기능
-- index.jsp redirect to board/list
+
   
 ### 20.01.25
 - MariaDB Connection TEST
