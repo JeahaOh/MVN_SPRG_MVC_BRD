@@ -80,7 +80,7 @@
     </selectKey>
     
   </insert>
-  <!-- 
+  
   <insert id="insertBoardFail" parameterType="com.study.brd.board.VO.Board" keyProperty="board_seq">
     INSERT INTO TB_BOARD (
         BOARD_RE_REF
@@ -109,7 +109,7 @@
       SELECT LAST_INSERT_ID() AS BOARD_SEQ
     </selectKey>
   </insert>
-  -->
+  
   
   <update id="updateBoard" parameterType="com.study.brd.board.VO.Board">
     UPDATE TB_BOARD
@@ -120,6 +120,5 @@
         , UPD_DATE = NOW()
     WHERE BOARD_SEQ = #{board_seq}
   </update>
-  
   
 </mapper>

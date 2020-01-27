@@ -40,6 +40,8 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
+  <tx:annotation-driven/>
+  <!-- 
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="serviceOperation" expression="execution(public * com.study.brd..SRVC.*Service.*(..))" />
 		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceOperation" advice-ref="txAdvice" />
@@ -52,5 +54,6 @@
 			<tx:method name="delete*" rollback-for="Exception" />
 		</tx:attributes>
 	</tx:advice>
+  -->
 
 </beans>

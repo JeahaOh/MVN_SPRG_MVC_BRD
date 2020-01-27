@@ -43,12 +43,15 @@ public class BoardDAO {
     return board.getBoard_seq();
   }
   
-//  public int insertBoardFail(Board board) throws Exception {
-//    sqlSession.insert(NAMESPACE + ".insertBoardFail", board);
-//    return board.getBoard_seq();
-//  }
+  public int insertBoardFail(Board board) throws Exception {
+    sqlSession.insert(NAMESPACE + ".insertBoardFail", board);
+    return board.getBoard_seq();
+  }
   
   public void updateBoard(Board board) throws Exception {
-    sqlSession.update (NAMESPACE + ".updateBoard", board);
+    sqlSession.update(NAMESPACE + ".updateBoard", board);
+  }
+  public void updateBoardFail(Board board) throws Exception {
+    sqlSession.update(NAMESPACE + ".updateBoardFail", board);
   }
 }
