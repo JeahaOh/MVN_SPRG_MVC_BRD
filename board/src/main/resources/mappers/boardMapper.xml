@@ -93,17 +93,19 @@
       , INS_DATE
       , UPD_USER_ID
       , UPD_DATE
+      <!-- , BOARD_SEQ -->
     ) VALUES (
         0
       , 0
       , 0
       , #{board_subject}
-      , #{board_writer}
+      , #{board_writer1}
       , #{board_content}
       , #{board_writer}
       , NOW()
       , #{board_writer}
       , NOW()
+      <!-- , #{board_seq} -->
     )
     <selectKey resultType="int" keyColumn="board_seq" keyProperty="board_seq" order="AFTER">
       SELECT LAST_INSERT_ID() AS BOARD_SEQ
