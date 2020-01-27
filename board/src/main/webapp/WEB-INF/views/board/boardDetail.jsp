@@ -50,7 +50,17 @@
           }
         });
       }
+    };
+    
+    const goBoardUpdate = function() {
+      location.href = "/board/boardUpdate?board_seq=" + $('#board_seq').val();
     }
+    
+    //	뒤로가기 막기? 이거보다 더 좋은 방법이 있는거 같은데 잘 모르겠다.
+    history.pushState(null, null, location.href);
+    window.onpopstate = function(event) {
+        history.go(-2);
+    };
   </script>
 </head>
 
@@ -91,7 +101,7 @@
         </form>
         <div class="btn_right mt15">
           <button type="button" class="btn black mr5" onclick="goBoardList();">목록으로</button>
-          <button type="button" class="btn black mr5" onclick=""></button>
+          <button type="button" class="btn black mr5" onclick="goBoardUpdate()">수정하기</button>
           <button type="button" class="btn black mr5" onclick="deleteBoard();">삭제하기</button>
         </div>
       </div>

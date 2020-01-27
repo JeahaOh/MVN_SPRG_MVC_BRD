@@ -32,9 +32,9 @@
     , BOARD_HITS
     , DEL_YN
     , INS_USER_ID
-    , CAST( DATE_FORMAT(INS_DATE, '%Y-%m-%d %H:%i%s') AS CHAR(19) ) AS INS_DATE
+    , DATE_FORMAT(INS_DATE, '%Y-%m-%d %H:%i:%s') AS INS_DATE
     , UPD_USER_ID
-    , CAST( DATE_FORMAT(UPD_DATE, '%Y-%m-%d %H:%i%s') AS CHAR(19) ) AS UPD_DATE
+    , DATE_FORMAT(UPD_DATE, '%Y-%m-%d %H:%i:%s') AS UPD_DATE
     FROM BOARD.TB_BOARD
     WHERE BOARD_SEQ = #{board_seq}
   </select>
@@ -81,7 +81,15 @@
     
   </insert>
   
-  
+  <update id="updateBoard" parameterType="com.study.brd.board.VO.Board">
+    UPDATE TB_BOARD
+      SET
+          BOARD_SUBJECT = #{board_subject}
+        , BOARD_CONTENT = #{board_content}
+        , UPD_USER_ID  = #{upd_user_id}
+        , UPD_DATE = NOW()
+    WHERE BOARD_SEQ = #{board_seq}
+  </update>
   
   
 </mapper>

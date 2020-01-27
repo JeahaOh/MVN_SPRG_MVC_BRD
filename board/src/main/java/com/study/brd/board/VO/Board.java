@@ -1,6 +1,6 @@
 package com.study.brd.board.VO;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Board {
   int board_seq;

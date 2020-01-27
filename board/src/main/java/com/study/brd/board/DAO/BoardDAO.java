@@ -23,6 +23,10 @@ public class BoardDAO {
   
   public Board getBoardDetail(Board board) throws Exception {
     logger.info(String.valueOf(board.getBoard_seq()));
+    logger.info(board.getSearch_type());
+    if( board.getSearch_type() == null ) {
+      sqlSession.update(NAMESPACE + ".updateBoardHits", board);
+    }
     return sqlSession.selectOne(NAMESPACE + ".getBoardDetail", board);
   }
   
@@ -37,5 +41,9 @@ public class BoardDAO {
   public int insertBoard(Board board) throws Exception {
     sqlSession.insert(NAMESPACE + ".insertBoard", board);
     return board.getBoard_seq();
+  }
+  
+  public void updateBoard(Board board) throws Exception {
+    sqlSession.update (NAMESPACE + ".updateBoard", board);
   }
 }

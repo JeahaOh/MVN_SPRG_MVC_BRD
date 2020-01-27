@@ -25,9 +25,6 @@ public class BoardServiceImpl implements BoardService {
   @Override
   public Board getBoardDetail(Board board) throws Exception {
     logger.info(board.toString());
-    if( board.getSearch_type() != null && !board.getSearch_type().toLowerCase().equals("s") ) {
-      logger.info("board.search_type : " + boardDao.updateBoardHits(board) );
-    }
     return boardDao.getBoardDetail(board);
   }
 
@@ -45,10 +42,13 @@ public class BoardServiceImpl implements BoardService {
   }
 
   @Override
-  public Map<String, String> insertBoard(Board board) throws Exception {
-    int boardNo = boardDao.insertBoard( board );
-    System.out.println(boardNo);
-    return null;
+  public void insertBoard(Board board) throws Exception {
+    boardDao.insertBoard( board );
+  }
+
+  @Override
+  public void updateBoard(Board board) throws Exception {
+    boardDao.updateBoard(board);
   }
 
 }

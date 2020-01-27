@@ -37,7 +37,7 @@ public class BoardController {
   public String getBoardList(HttpServletRequest request, HttpServletResponse response, Model model)
       throws Exception {
     List<Board> boardList = boardService.getBoardList();
-    logger.info(boardList.toString());
+    logger.info(boardList.size() + "");
     model.addAttribute("boardList", boardList);
     return "board/boardList";
   }
@@ -63,7 +63,6 @@ public class BoardController {
 
   /**
    * 게시불 삭제
-   * 
    * @param board
    * @return
    * @throws Exception
@@ -74,17 +73,53 @@ public class BoardController {
     return boardService.deleteBoard(board);
   }
 
+  /**
+   * 게시물 작성페이지 이동
+   * @param request
+   * @param response
+   * @return
+   * @throws Exception
+   */
   @RequestMapping(value = "boardWrite")
-  public String writeBoard(HttpServletRequest request, HttpServletResponse response)
+  public String writeBoard(HttpServletRequest request, HttpServletResponse response, Model model)
       throws Exception {
+    model.addAttribute("status", "write");
     return "board/boardWrite";
   }
 
+  /**
+   * 게시물 작성
+   * @param request
+   * @param response
+   * @param model
+   * @param board
+   * @return
+   * @throws Exception
+   */
   @RequestMapping(value = "insertBoard", method=RequestMethod.POST)
   public String insertBoard(HttpServletRequest request, HttpServletResponse response, Model model,
       @ModelAttribute Board board) throws Exception {
     logger.info(board.toString());
     boardService.insertBoard(board);
+
+    return "redirect:/board/boardDetail?board_seq=" + board.getBoard_seq();
+  }
+  
+  @RequestMapping(value = "boardUpdate" , method=RequestMethod.GET)
+  public String updateBoardPage(HttpServletRequest request, HttpServletResponse response, Model model,
+      Board board) throws Exception {
+    logger.info( board.toString() );
+    board = boardService.getBoardDetail(board);
+    model.addAttribute("board", board);
+    model.addAttribute("status", "edit");
+    return "board/boardWrite";
+  }
+  
+  @RequestMapping(value = "boardUpdate" , method=RequestMethod.POST)
+  public String updateBoardReq(HttpServletRequest request, HttpServletResponse response, Model model,
+      @ModelAttribute Board board) throws Exception {
+    logger.info( board.toString() );
+    boardService.updateBoard(board);
     return "redirect:/board/boardDetail?board_seq=" + board.getBoard_seq();
   }
 }
