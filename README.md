@@ -32,6 +32,7 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 ### 20.01.27
 - index.jsp redirect to board/list
 - jsp CSS 적용
+- 게시물 작성 기능
 
 ### 20.01.26
 - log4jdbc.log4j.properties 수정 -> Driver 안잡아 줘서 main src에서 DB를 못잡음.

@@ -9,7 +9,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.study.brd.board.SRVC.BoardService;
 import com.study.brd.board.VO.Board;
@@ -17,13 +19,14 @@ import com.study.brd.board.VO.Board;
 @Controller
 @RequestMapping(value = "/board")
 public class BoardController {
-  
+
   private Logger logger = LoggerFactory.getLogger(this.getClass());
   @Autowired
   private BoardService boardService;
-  
+
   /**
    * 게시판 목록 페이지 조회
+   * 
    * @param request
    * @param response
    * @param model
@@ -31,15 +34,17 @@ public class BoardController {
    * @throws Exception
    */
   @RequestMapping(value = "/list")
-  public String getBoardList(HttpServletRequest request, HttpServletResponse response, Model model) throws Exception {
+  public String getBoardList(HttpServletRequest request, HttpServletResponse response, Model model)
+      throws Exception {
     List<Board> boardList = boardService.getBoardList();
     logger.info(boardList.toString());
     model.addAttribute("boardList", boardList);
     return "board/boardList";
   }
-  
+
   /**
    * 게시물 상세 내용 조회
+   * 
    * @param request
    * @param response
    * @param model
@@ -47,17 +52,39 @@ public class BoardController {
    * @return
    * @throws Exception
    */
-  @RequestMapping(value="/boardDetail")
-  public String getBoardDetail(HttpServletRequest request, HttpServletResponse response, Model model, Board board) throws Exception {
+  @RequestMapping(value = "/boardDetail")
+  public String getBoardDetail(HttpServletRequest request, HttpServletResponse response,
+      Model model, Board board) throws Exception {
     logger.info(board.toString());
     board = boardService.getBoardDetail(board);
     model.addAttribute("board", board);
     return "board/boardDetail";
   }
-  
-  @RequestMapping(value="/deleteBoard")
+
+  /**
+   * 게시불 삭제
+   * 
+   * @param board
+   * @return
+   * @throws Exception
+   */
+  @RequestMapping(value = "/deleteBoard")
   @ResponseBody
   public Map<String, String> deleteBoard(Board board) throws Exception {
     return boardService.deleteBoard(board);
+  }
+
+  @RequestMapping(value = "boardWrite")
+  public String writeBoard(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
+    return "board/boardWrite";
+  }
+
+  @RequestMapping(value = "insertBoard", method=RequestMethod.POST)
+  public String insertBoard(HttpServletRequest request, HttpServletResponse response, Model model,
+      @ModelAttribute Board board) throws Exception {
+    logger.info(board.toString());
+    boardService.insertBoard(board);
+    return "redirect:/board/boardDetail?board_seq=" + board.getBoard_seq();
   }
 }

@@ -44,4 +44,11 @@ public class BoardServiceImpl implements BoardService {
     return result;
   }
 
+  @Override
+  public Map<String, String> insertBoard(Board board) throws Exception {
+    int boardNo = boardDao.insertBoard( board );
+    System.out.println(boardNo);
+    return null;
+  }
+
 }

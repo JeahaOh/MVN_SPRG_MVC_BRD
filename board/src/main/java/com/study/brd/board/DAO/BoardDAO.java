@@ -33,4 +33,9 @@ public class BoardDAO {
   public int deleteBoard(Board board) throws Exception {
     return sqlSession.delete(NAMESPACE + ".deleteBoard", board);
   }
+  
+  public int insertBoard(Board board) throws Exception {
+    sqlSession.insert(NAMESPACE + ".insertBoard", board);
+    return board.getBoard_seq();
+  }
 }

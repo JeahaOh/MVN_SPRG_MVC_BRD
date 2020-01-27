@@ -16,6 +16,9 @@
     const goBoardDetail = function (boardSeq) {
       location.href = "/board/boardDetail?board_seq=" + boardSeq;
     }
+    const goBoardWrite = function() {
+      location.href = "/board/boardWrite";
+    }
   </script>
 </head>
 
@@ -66,7 +69,7 @@
         </table>
       </form>
       <div class="btn_right mt15">
-        <button type="button" class="btn black mr5">작성하기</button>
+        <button type="button" class="btn black mr5" onclick="goBoardWrite();">작성하기</button>
       </div>
       </div>
     </div>
