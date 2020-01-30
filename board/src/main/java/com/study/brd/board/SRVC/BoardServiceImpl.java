@@ -20,8 +20,13 @@ public class BoardServiceImpl implements BoardService {
   private BoardDAO boardDao;
   
   @Override
-  public List<Board> getBoardList() throws Exception {
-    return boardDao.getBoardList();
+  public List<Board> getBoardList( HashMap<String, Object> params ) throws Exception {
+    return boardDao.getBoardList( params );
+  }
+  
+  @Override
+  public int getBoardCnt() throws Exception {
+    return boardDao.getBoardCnt();
   }
   
   @Override

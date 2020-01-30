@@ -19,6 +19,14 @@
     <!-- , UPD_USER_ID
     , UPD_DATE -->
     FROM BOARD.TB_BOARD
+    ORDER BY BOARD_SEQ DESC
+    LIMIT #{rowNo}, #{size}
+  </select>
+  
+  <select id="getBoardCnt" resultType="int">
+    SELECT
+      COUNT( BOARD_SEQ )
+    FROM BOARD.TB_BOARD
   </select>
   
   <select id="getBoardDetail" parameterType="com.study.brd.board.VO.Board" resultType="com.study.brd.board.VO.Board">

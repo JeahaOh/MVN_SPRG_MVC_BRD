@@ -44,7 +44,9 @@ Maven으로 Build한 Java Spring Project의 MVC 패턴 게시판 예제.
 - 게시물 삭제 기능
 - 게시물 수정 기능
 - 트랜잭션 처리
-
+- 페이징 처리
+  - 맞는거 같은데 확신은 없음
+  - 로직 주석 정리 해야 함.
   
 ### 20.01.25
 - MariaDB Connection TEST

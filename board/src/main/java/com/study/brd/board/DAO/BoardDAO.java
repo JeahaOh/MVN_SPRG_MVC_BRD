@@ -1,5 +1,6 @@
 package com.study.brd.board.DAO;
 
+import java.util.HashMap;
 import java.util.List;
 import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
@@ -17,8 +18,12 @@ public class BoardDAO {
   
   private static final String NAMESPACE = "com.study.brd.board.DAO.BoardDAO";
   
-  public List<Board> getBoardList() throws Exception {
-    return sqlSession.selectList(NAMESPACE + ".getBoardList");
+  public int getBoardCnt() throws Exception {
+    return sqlSession.selectOne(NAMESPACE + ".getBoardCnt");
+  }
+  
+  public List<Board> getBoardList( HashMap<String, Object> params ) throws Exception {
+    return sqlSession.selectList( NAMESPACE + ".getBoardList", params );
   }
   
   public Board getBoardDetail(Board board) throws Exception {
