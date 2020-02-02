@@ -19,6 +19,9 @@
     const goBoardWrite = function() {
       location.href = "/board/boardWrite";
     }
+    const goPage = function( pageNo ){
+      location.href = location.origin + location.pathname + "?pageNo=" + pageNo;
+    }
   </script>
 </head>
 
@@ -68,6 +71,20 @@
           </tbody>
         </table>
       </form>
+      <div class="btn_center mt15">
+        <button onclick="goPage(${page.totalFirstPage})" class="direction_left01">&lt;&lt;</button>
+        <c:forEach var="i" begin="${page.firstPage}" end="${page.lastPage}">
+          <c:choose>
+            <c:when test="${i eq page.curPage}">
+              <button><b>${i}</b></button>
+            </c:when>
+            <c:otherwise>
+              <button onclick="goPage(${i})">${i}</button>
+            </c:otherwise>
+          </c:choose>
+        </c:forEach>
+        <button onclick="goPage(${page.totalLastPage})" class="direction_right01">&gt;&gt;</button>
+      </div>
       <div class="btn_right mt15">
         <button type="button" class="btn black mr5" onclick="goBoardWrite();">작성하기</button>
       </div>

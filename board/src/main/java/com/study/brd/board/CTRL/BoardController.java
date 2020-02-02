@@ -38,51 +38,53 @@ public class BoardController {
    */
   @GetMapping(value = "/list")
   public String getBoardList(HttpServletRequest request, HttpServletResponse response, Model model,
-      @RequestParam(name = "pageNo", defaultValue = "1") int currentPageNo,
-      @RequestParam(name = "size", defaultValue = "10") int countPerPage) throws Exception {
+      @RequestParam(name = "pageNo", defaultValue = "1") int currentPageNo
+      //, @RequestParam(name = "size", defaultValue = "10") int showingPostCnt
+      ) throws Exception {
+    
+    HashMap<String, Object> pagination = new HashMap<>();
+    if( currentPageNo < -1 ) currentPageNo = 1;
+//    if( showingPostCnt <= 5 || showingPostCnt > 10 ) showingPostCnt = 5;
     
     /**
      * pageNo         : 현재 화면에 출력 되는, 요청 된 페이지 번호.
-     * countPerList   : 한 화면에 출력 될 페이지 수.
-     * countPerPage   : 한 화면에 출력 될 게시물의 수.
-     * totalListCount : 총 게시물의 수.
+     * showingPostCnt : 한 화면에 출력 될 게시물의 수.
+     * totalPostCount : 총 게시물의 수.
      * totalPageCount : 총 페이지의 수.
+     * showingPageCnt : 한 화면에 출력 될 페이지 수.
      * firstPage      : 현재 화면에서의 첫 페이지 번호.
      * lastPage       : 현재 화면에서의 마지막 페이지 번호.
      */
     
-    if( currentPageNo < -1 ) currentPageNo = 1;
-    if( countPerPage <= 5 || countPerPage > 10 ) countPerPage = 5;
     
-    int totalListCount = boardService.getBoardCnt();
-
+    int showingPageCnt = 10;
+    int showingPostCnt = 10;
+    int totalPostCount = boardService.getBoardCnt();
+    int totalPageCount = (int) Math.ceil( (totalPostCount - 1) / showingPostCnt);
+    if( totalPostCount % showingPageCnt > 0 ) totalPageCount = totalPageCount + 1;
     
-    HashMap<String, Object> pagination = new HashMap<>();
-    pagination.put( "rowNo", (currentPageNo - 1) * countPerPage );
-    pagination.put( "size", countPerPage );
+    int firstPage = (((currentPageNo - 1) / showingPostCnt) * showingPostCnt ) + 1;
+    int lastPage = ((firstPage + showingPageCnt - 1) < totalPageCount) ? (firstPage + showingPageCnt - 1) : totalPageCount;
     
-    int countPerList = 10;
-    int totalPageCount = totalListCount / countPerPage;
-    if( totalListCount % countPerList > 0 ) totalPageCount = totalPageCount + 1;
-    int firstPage = (((currentPageNo - 1) / countPerPage) * countPerPage ) + 1;
-    int lastPage = firstPage + countPerList - 1;
-    if( lastPage > totalPageCount ) lastPage = totalPageCount - 1 ;
+    pagination.put( "rowNo", (currentPageNo - 1) * showingPostCnt );
+    pagination.put( "size", showingPostCnt );
     
-    
-    
+    pagination.put("pageCnt", showingPageCnt);
+    pagination.put("totalFirstPage", 1);
+    pagination.put("firstPage", firstPage);
+    pagination.put("lastPage", lastPage);
+    pagination.put("curPage", currentPageNo);
+    pagination.put("totalLastPage", totalPageCount);
     
     
     List<Board> boardList = boardService.getBoardList( pagination );
-    logger.info(boardList.size() + "");
     
-
-    
+    logger.info("cnt : {}, size : {}, pageNo : {}", totalPostCount, showingPostCnt, currentPageNo);
+    logger.info("totalPage : {}, firstPage : {}, lastPage : {}", totalPageCount, firstPage, lastPage);
     
     model.addAttribute("boardList", boardList);
+    model.addAttribute("page", pagination);
     
-    logger.info("cnt : {}, size : {}, pageNo : {}", totalListCount, countPerPage, currentPageNo);
-    logger.info( "totalPageCount : {}", totalPageCount );
-    logger.info( "firstPage : {}, lastPage : {}", firstPage, lastPage );
     return "/board/boardList";
   }
 
