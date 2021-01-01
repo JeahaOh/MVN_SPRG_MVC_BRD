@@ -153,7 +153,15 @@ public class BoardController {
 
     return "redirect:/board/boardDetail?board_seq=" + board.getBoard_seq();
   }
-
+  /**
+   * 게시물 수정페이지 이동
+   * @param request
+   * @param response
+   * @param model
+   * @param board
+   * @return
+   * @throws Exception
+   */
   @RequestMapping(value = "boardUpdate", method = RequestMethod.GET)
   public String updateBoardPage(HttpServletRequest request, HttpServletResponse response,
       Model model, Board board) throws Exception {
@@ -164,11 +172,41 @@ public class BoardController {
     return "board/boardWrite";
   }
 
+  /**
+   * 게시물 수정 POST
+   * @param request
+   * @param response
+   * @param model
+   * @param board
+   * @return
+   * @throws Exception
+   */
   @RequestMapping(value = "boardUpdate", method = RequestMethod.POST)
   public String updateBoardReq(HttpServletRequest request, HttpServletResponse response,
       Model model, @ModelAttribute Board board) throws Exception {
     logger.info(board.toString());
     boardService.updateBoard(board);
     return "redirect:/board/boardDetail?board_seq=" + board.getBoard_seq();
+  }
+  /**
+   * 게시판 답글 작성 페이지 이동
+   * @param request
+   * @param response
+   * @return
+   * @throws Exception
+   */
+  @RequestMapping(value = "/boardReply")
+  public String boardReply(HttpServletRequest request, HttpServletResponse response, Board board, Model model) throws Exception {
+    logger.info(board.toString());
+    board = boardService.getBoardDetail(board);
+    model.addAttribute("board", board);
+    model.addAttribute("status", "reply");
+    return "board/boardWrite";
+  }
+
+  @RequestMapping( value = "/insertBoardReply")
+  @ResponseBody
+  public Board insertBoardReply(HttpServletRequest request, HttpServletResponse response, Board board) throws Exception {
+    return boardService.insertBoardReply(board);
   }
 }

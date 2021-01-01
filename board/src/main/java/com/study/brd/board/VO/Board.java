@@ -17,6 +17,7 @@ public class Board {
   String upd_user_id;
   Date upd_date;
   String search_type;
+  int board_parent_seq;
   
   public Board() {
     super();
@@ -137,6 +138,14 @@ public class Board {
   }
   public void setSearch_type(String search_type) {
     this.search_type = search_type;
+  }
+  
+  public int getBoard_parent_seq() {
+    return board_parent_seq;
+  }
+
+  public void setBoard_parent_seq(int board_parent_seq) {
+    this.board_parent_seq = board_parent_seq;
   }
   
   @Override

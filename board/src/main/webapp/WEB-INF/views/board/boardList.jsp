@@ -60,7 +60,13 @@
                 <c:forEach var="brd" items="${boardList}">
                   <tr onClick="goBoardDetail(${brd.board_seq})" style='cursor:Pointer'>
                     <td>${brd.board_seq}</td>
-                    <td>${brd.board_subject}</td>
+                    <td>
+                      <!-- <c:if test="${brd.board_re_lev > 0}">
+                        <c:forEach var="i" begin="1" end="${brd.board_re_lev}">
+                          RE:
+                        </c:forEach>
+                      </c:if> -->
+                      ${brd.board_subject}</td>
                     <td>${brd.board_writer}</td>
                     <td>${brd.board_hits}</td>
                     <td>${brd.ins_date}</td>

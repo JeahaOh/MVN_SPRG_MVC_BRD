@@ -60,4 +60,21 @@ public class BoardServiceImpl implements BoardService {
     boardDao.updateBoard(board);
   }
 
+  @Override
+  public Board insertBoardReply(Board board) throws Exception {
+    int insertCnt = 0;
+    logger.info( board.toString() );
+    board = boardDao.getBoardReplyInfo(board);
+    logger.info( board.toString() );
+
+
+    // insertCnt += boardDao.updateBoardReSeq(board);
+    // insertCnt += boardDao.insertBoardReply(board);
+
+    if( insertCnt > 0 ) {
+      return board;
+    } else {
+      return null;
+    }
+  }
 }

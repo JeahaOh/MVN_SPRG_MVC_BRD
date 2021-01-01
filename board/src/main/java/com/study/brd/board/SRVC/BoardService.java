@@ -14,4 +14,5 @@ public interface BoardService {
   public Map<String, String> deleteBoard(Board board) throws Exception;
   public void insertBoard(Board board) throws Exception;
   public void updateBoard(Board board) throws Exception;
+  public Board insertBoardReply(Board board) throws Exception;
 }

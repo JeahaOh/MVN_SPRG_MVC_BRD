@@ -59,4 +59,28 @@ public class BoardDAO {
   public void updateBoardFail(Board board) throws Exception {
     sqlSession.update(NAMESPACE + ".updateBoardFail", board);
   }
+
+  /**
+   * 게시물 답글 정보 조회
+   * @param board
+   * @return
+   * @throws Exception
+   */
+  public Board getBoardReplyInfo(Board board) throws Exception {
+    return sqlSession.selectOne(NAMESPACE + ".getBoardReplyInfo", board);
+  }
+
+  /**
+   * 게시물 답글의 순서 수정
+   * @param board
+   * @return
+   * @throws Exception
+   */
+  public int updateBoardReSeq(Board board) throws Exception {
+    return sqlSession.update(NAMESPACE + ".updateBoardReSeq");
+  }
+
+  public int insertBoardReply(Board board) throws Exception {
+    return sqlSession.insert(NAMESPACE + ".insertBoardRepsly", board);
+  }
 }

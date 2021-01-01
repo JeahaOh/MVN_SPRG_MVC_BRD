@@ -65,7 +65,6 @@
             <form id="boardForm" name="boardForm" method="POST" action="/board/boardUpdate">
           </c:otherwise>
         </c:choose>
-        <%-- <form id="boardForm" name="boardForm" method="POST" action="/board/insertBoard">  --%>
           <table width="100%" class="table02">
             <caption>
               <strong>
@@ -101,7 +100,6 @@
           </table>
           <c:if test="${status eq 'edit'}">
             <input type="hidden" name="board_seq" id="board_seq" value="${board.board_seq}"  />
-            <input type="hidden" name="search_type" id="search_type" value="S"  />
           </c:if>
         </form>
         <div class="btn_right mt15">

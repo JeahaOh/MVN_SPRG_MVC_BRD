@@ -61,6 +61,9 @@
     window.onpopstate = function(event) {
         history.go(-2);
     };
+    const goBoardReply = function( board_seq ) {
+      location.href = "/board/boardReply?board_seq=" + board_seq
+    }
   </script>
 </head>
 
@@ -103,6 +106,7 @@
           <button type="button" class="btn black mr5" onclick="goBoardList();">목록으로</button>
           <button type="button" class="btn black mr5" onclick="goBoardUpdate()">수정하기</button>
           <button type="button" class="btn black mr5" onclick="deleteBoard();">삭제하기</button>
+          <button type="button" class="btn black mr5" onclick="goBoardReply(${board.board_seq});">답글달기</button>
         </div>
       </div>
     </div>
